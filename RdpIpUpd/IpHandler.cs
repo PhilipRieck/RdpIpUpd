@@ -75,22 +75,40 @@ namespace RdpIpUpd
         private static List<string> GetRdpContentsAsync(string rdpPath)
         {
             var lines = new List<string>();
-            using (var stream = new StreamReader(rdpPath))
+            if (string.IsNullOrEmpty(rdpPath)) return lines;
+            if (!File.Exists(rdpPath)) return lines;
+
+            try
             {
-                var contents = stream.ReadToEnd();
-                lines.AddRange(contents.Split(new []{ Environment.NewLine}, StringSplitOptions.None));
+                using (var stream = new StreamReader(rdpPath))
+                {
+                    var contents = stream.ReadToEnd();
+                    lines.AddRange(contents.Split(new[] { Environment.NewLine }, StringSplitOptions.None));
+                }
             }
+            catch (Exception)
+            {
+                return new List<string>();
+            }
+            
             return lines;
         }
 
         private static void WriteRdpFile(string rdpPath, IEnumerable<string> lines)
         {
-            using (var stream = new StreamWriter(rdpPath, false))
+            try
             {
-                foreach (var line in lines)
+                using (var stream = new StreamWriter(rdpPath, false))
                 {
-                    stream.WriteLine(line);
+                    foreach (var line in lines)
+                    {
+                        stream.WriteLine(line);
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                return;
             }
         }
 
