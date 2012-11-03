@@ -34,7 +34,7 @@ The Code
 I wanted to look at [Caliburn.Micro](http://caliburnmicro.codeplex.com/) one afternoon, and decided to use it to write a utility.  This is the result.  My only constraint was that I wanted to make sure Caliburn.Micro didn't enforce a WPF shell or some IoC constraints, so this seemed like a good trial.
 
 
-#License Stuff
+###License Stuff
 Only because I have been told ( somewhat harshly ) that "dumping code into github isn't providing a license".  Sorry.  
 
 This work is "AS IS" and without warranty of any kind, licensed under the [Creative Commons CC0 License](http://creativecommons.org/publicdomain/zero/1.0/)
