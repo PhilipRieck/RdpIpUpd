@@ -44,7 +44,7 @@ namespace RdpIpUpd
         private static void WriteAddressToRdpFile(string rdpPath, string ipAddress)
         {
             var lines = GetRdpContentsAsync(rdpPath);
-            var newLine = "full address:" + ipAddress;
+            var newLine = "full address:s:" + ipAddress;
             var addressLine = lines.FindIndex(l => l.StartsWith("full address:", StringComparison.CurrentCultureIgnoreCase));
             if (addressLine >= 0)
             {
